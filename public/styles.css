@@ -1,0 +1,26 @@
+body{
+  background-color: #78093b;
+}
+
+
+.topSpacer{
+ margin-top: 8vh;
+}
+
+.imgTopSpacer{
+  margin-top: 1.5vh;
+}
+
+.visually-hidden-image {
+  @include visually-hidden;
+}
+
+@media only screen and (min-width: 1140px) {
+#imgHeader{
+  width: 80vw;
+  height: 45vh;
+}
+
+
+
+}
