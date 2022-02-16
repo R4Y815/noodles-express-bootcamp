@@ -9,7 +9,7 @@
           <p class="card-text">Serving Size: <%= recipe.yield %> </p>
 
           <form action="<%= favPath %>" method="POST">
-          <input type="hidden" id=“index” name="favourite" value="<%= index %>">
+          <input type="hidden" id=favourite name="favourite" value="<%= index %>">
           <button type="submit">Favorite</button>
           </form>
         </div>

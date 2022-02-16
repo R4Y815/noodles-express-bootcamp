@@ -18,13 +18,6 @@ app.use(cookieParser());
 // Set view engine
 app.set('view engine', 'ejs');
 
-/* FN: to replace all the '/n' inside values of 'ingredients' keys with '<br>' and then return a new string to display */
-/* const replaceSlashN = (jsObject, index) => {
-  const lines = jsObject.recipes[index].ingredients.split('\n'); */
-  /* const newString = lines.join("<br>"); */
-/* return lines;
-}; */
-
 app.get('/', (req, res) => {
   console.log('Cookies: ', req.cookies)
   const  favIndex  = req.cookies.favourite;
@@ -35,37 +28,23 @@ app.get('/', (req, res) => {
   })
 });
 
-/* app.get('/', (req, res) => {
-  read('data.json', (err, data) => {
 
-  response.render('#', data);
-  })
-}); */
-
-const someRoute = '/favourites';
+const routeToSetFavouriteInCookie = '/favourites';
 
 app.get('/recipes/:index', (req, res) => {
   read('data.json', (err, data) => {
     const { index } = req.params;
-    const content = { index, favPath: someRoute, recipe: data.recipes[index] };
-/*     const components = replaceSlashN(data, index);
-    console.log(components);
-    const contentEx = { index, recipe: data.recipes[index], components} */
+    const content = { index, favPath: routeToSetFavouriteInCookie, recipe: data.recipes[index] };
   res.render('recipe', content);
   })
 });
 
 
-app.post(someRoute, (req,res) => {
-const { index } = req.body;
-console.log('req.body= ',req.body);
-console.log('index =', index);
-const inDx = JSON.parse(JSON.stringify(req.body));
-console.log('inDx', inDx);
-const indice = inDx.favourite;
+app.post(routeToSetFavouriteInCookie, (req,res) => {
+const indice = req.body.favourite;
 console.log('indice =', indice);
 res.cookie('favourite',`${indice}`);
-res.redirect(301, `http://localhost:${port}/recipes/${indice}`);
+res.redirect(301, `recipes/${indice}`);
 });
 
 
