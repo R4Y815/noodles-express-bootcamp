@@ -1,0 +1,37 @@
+<%-include('header');-%>
+
+  <div class = "container">
+      <div class = "row justify-content-center">
+    <!--    <div class = "row-xl text-center">
+         <img src ="./chicken-stir-fry-noodles.jpg" id = "imgHeader" width ="0" height ="auto" alt ="chicken-stir-fry-noodles" />
+        </div> -->
+      <div class = "row">
+        <div class = "col-3"></div>
+          <h2 class = "col-6  text-center text-white">Noodle App</h2>
+         <div class = "col-3 "></div>
+      </div>
+  <div class="col-12 col-xl-6">
+    <div class="card text-center row" >
+      <div class="card-body ">
+        <h5 class="card-title">List of Noodle Recipes</h5>
+          <p class="card-text">Consequat minim ad mollit qui enim cupidatat ex qui laboris voluptate voluptate excepteur.</p>
+        <% for (let i = 0; i < recipe.length; i += 1) {%>
+              <div class="col-12 col-xl-6">
+                <div class="card row text-center" >
+                  <div class="card-body ">
+                      <p class="card-text"><a href="/recipes/<%= i %>" class="btn btn-primary-light"><u>Recipe <%= i %>: <%= recipe[i].label%></u></a></p>
+                      <% if (i === Number(favIndex)){ %> 
+                        <span class="fvHglt">{FAVOURITE!}</span>
+                        <%}%>
+                  </div>
+                </div>
+              </div>
+            <%} %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('footer'); -%>
+  

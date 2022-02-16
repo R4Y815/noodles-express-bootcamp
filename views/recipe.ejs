@@ -1,0 +1,49 @@
+<%-include('header');-%>
+
+    <div class ="container position-relative topSpacer"> 
+      <div class = "row justify-content-center mt-5">    
+        <div class="card text.grey bg-light" style="width: 90vw;">
+        <img src="<%= recipe.image %> " class="card-img-top imgTopSpacer" alt="chicken-stir-fry-noodles">
+        <div class="card-body">
+          <h5 class="card-title"><%= recipe.label %></h5>
+          <p class="card-text">Serving Size: <%= recipe.yield %> </p>
+
+          <form action="<%= favPath %>" method="POST">
+          <input type="hidden" id=“index” name="favourite" value="<%= index %>">
+          <button type="submit">Favorite</button>
+          </form>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item text.black bg-light">Caution:
+            <ul>
+              <li><%= recipe.caution %> </li>
+            </ul>
+          </li>
+          <li class="list-group-item text.black bg-light">Ingredients:
+          </br>
+          <ul>
+            <% recipe.ingredients.split('\n').forEach((item) =>{ %> 
+              <li><%= item %></li> 
+            <% }); %>
+            </ul>
+          </li>
+          <li class="list-group-item text.black bg-light">Category: <%= recipe.category %>
+          </li>
+          <li class="list-group-item text.black bg-light">Source: <a href ="<%= recipe.url %>" target="_blank"><%= recipe.source %> </a>
+            
+          </li>
+        <div class="card-body">
+          <a href="#" class="card-link">Other Recipes in this category</a>
+          <a href="#" class="card-link">Categories Page</a>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+<%- include('footer'); -%>
+  
+    
+ 
+
+
+ 
